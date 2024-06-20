@@ -1,0 +1,376 @@
+
+
+<div
+id="carouselExampleDark"
+class="carousel carousel-dark slide"
+data-bs-ride="carousel"
+>
+<div class="carousel-indicators">
+  <button
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide-to="0"
+    class="active"
+    aria-current="true"
+    aria-label="Slide 1"
+  ></button>
+  <button
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide-to="1"
+    aria-label="Slide 2"
+  ></button>
+  <button
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide-to="2"
+    aria-label="Slide 3"
+  ></button>
+</div>
+<div class="carousel-inner">
+  <div class="carousel-item active" data-bs-interval="2000">
+    <img
+      src="../img/Ha long.jpg"
+      class="d-block w-100 img-fluid"
+      alt="Vịnh Hạ Long"
+      style="height: 500px"
+    />
+    <div
+      class="carousel-caption d-none d-md-block title-inner-bamner"
+      style="background-color: rgba(72, 70, 67, 0.5)"
+    >
+      <h5>Vịnh Hạ Long</h5>
+      <p>
+        Vịnh Hạ Long - biểu tượng của sự đẹp tự nhiên, là nơi hòa quyện
+        giữa biển cả xanh ngọc và những hòn đảo đá vôi hùng vĩ.
+      </p>
+    </div>
+  </div>
+  <div class="carousel-item" data-bs-interval="2000">
+    <img
+      src="../img/hanoi.jpeg"
+      class="d-block w-100 img-fluid"
+      alt="Hà Nội"
+      style="height: 500px"
+    />
+    <div
+      class="carousel-caption d-none d-md-block title-inner-bamner"
+      style="background-color: rgba(72, 70, 67, 0.5)"
+    >
+      <h5>Hà Nội</h5>
+      <p>
+        Hà Nội - Thủ đô nghìn năm văn hiến, là nơi thăng trầm của lịch sử
+        và nền văn hóa phồn thịnh.
+      </p>
+    </div>
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../img/tour-mien-tay-gia-re687686646521.jpg"
+      class="d-block w-100 img-fluid"
+      alt="Miền tây"
+      style="height: 500px"
+    />
+    <div
+      class="carousel-caption d-none d-md-block title-inner-bamner"
+      style="background-color: rgba(72, 70, 67, 0.5)"
+    >
+      <h5>Miền tây</h5>
+      <p>
+        Miền Tây - Nơi mặt nước êm đềm, nền văn hóa sôi động và cuộc sống
+        dân dã, gần gũi với sông nước và cây cỏ.
+      </p>
+    </div>
+  </div>
+</div>
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-bs-target="#carouselExampleDark"
+  data-bs-slide="prev"
+></button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-bs-target="#carouselExampleDark"
+  data-bs-slide="next"
+></button>
+</div>
+<section class="section-body-web">
+<div class="container" ng-controller="FillDataPD">
+  <div class="section1">
+    <div class="row">
+      <div
+        class="section-title text-center"
+        data-aos="fade-up"
+        data-aos-duration="4000"
+      >
+        <h2>
+          Du lich
+          <span style="color: red; font-weight: bold">Khám phá</span>
+        </h2>
+        <span>
+          " Hãy cùng khám phá những vùng đất mới, trải nghiệm văn hóa đa
+          dạng và tạo ra những kỷ niệm đáng nhớ trong cuộc hành trình du
+          lịch của bạn."
+        </span>
+      </div>
+      <div class="row d-flex justify-content-between">
+        <div class="dropdown" style="width: 10%; margin-top: 20px;">
+          <a
+            class="btn btn-secondary dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Sáp xếp giá
+          </a>
+  
+          <ul class="dropdown-menu">
+            <li
+              class="dropdown-item"
+              style="cursor: pointer"
+              ng-click="getPrice('-Gia')"
+            >
+              Thấp đến cao
+            </li>
+            <li
+              class="dropdown-item"
+              style="cursor: pointer"
+              ng-click="getPrice('Gia')"
+            >
+              Cao đến thấp
+            </li>
+          </ul>
+        </div>
+        <div class="mb-3 w-25" data-aos="fade-up" data-aos-duration="4000">
+          <label for="exampleFormControlInput1" class="form-label">Tìm kiếm</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tìm kiếm" ng-model="searchTerm" >  
+      </div>            
+      </div>
+      <!-- trangchu.html -->
+    <div class="cards" ng-controller="FillDataPD">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="p in ProDucts | orderBy: sortPrice | filter: {TenNoiDen: searchTerm }| limitTo:8:begin" data-aos="fade-up" data-aos-duration="4000">
+              <div class="card position-relative">
+                <a ng-href="#!ChitietSP/{{p.id}}">
+                      <div class="card-wrapper">
+                          <img src="{{p.images.img1}}" class="card-img-top first-content position-relative" alt="...">
+                          <img src="{{p.images.img2}}" class="card-img-top second-content position-absolute" alt="...">
+                      </div>
+                  </a>
+                  <div class="card-body">
+                      <h3 class="card-title">{{p.TenNoiDen}}</h3>
+                      <div class="card-content">
+                          <p style="color: black; font-size: 20px">Thời gian: <span>{{p.ThoiGian}}</span></p>
+                          <p style="color: black; font-size: 20px">Xuất phát từ: <span>{{p.TenNoiBatDau}}</span></p>
+                          <p class="price" style="font-size: 20px">{{ p.Gia | number : 0 }} ₫</p>
+                      </div>
+                      <button class="btn btnAdd" ng-click="AddCart(p)">Đi ngay thôi</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <nav aria-label="Page navigation example w-100" style="margin-top: 20px; padding: 30px; display: flex; justify-content: center;">
+          <ul class="pagination w-100" style="display: flex; justify-content: center;">
+            <li class="page-item"><a class="page-link" ng-click="prev()" href="">Lùi</a></li>
+            <li class="page-item" ng-repeat="page in pages">
+              <a class="page-link" ng-click="goToPage(page)" ng-class="{ 'active-page': currentPage === page }" href="">{{page}}</a>
+            </li>
+            <li class="page-item"><a class="page-link" ng-click="next()" href="">Tiếp</a></li>
+          </ul>
+        </nav>
+    </div>
+    </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="section-title text-center"
+      data-aos="fade-up"
+      data-aos-duration="4000"
+      style="margin: 20px 0 20px 0"
+    >
+      <h2>
+        Điểm đến
+        <span style="color: red; font-weight: bold">yêu thích</span>
+      </h2>
+    </div>
+    <div
+      class="swiper mySwiper"
+      data-aos="fade-up"
+      data-aos-duration="4000"
+    >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-1.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-2.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-3.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-4.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-5.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="card card-img border-0" style="width: 18rem">
+            <img src="../img/hanoi-card-6.jpg" class="" alt="..." />
+            <div class="card-body card-img-overlay position-relative">
+              <span
+                class="card-content fs-4 position-absolute bottom-0 start-0"
+                style="color: white"
+              >
+                Khám phá Hà Nội - Hành trình văn hóa và lịch sử đầy ấn
+                tượng.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+<div class="tintuc">
+  <div class="container">
+    <div class="row">
+      <h2 class="title-tintuc">
+        <h2 class="fw-bold text-center" data-aos="fade-up">
+          Thông tin <span style="color: red">Tin tức</span>
+        </h2>
+      </h2>
+      <div class="col-sm-12 col-md-5 col-lg-6" data-aos="fade-right">
+        <div class="img-jumbotron w-100 h-100">
+          <img
+            class="img-fluid img-thumbnail"
+            src="../img/hanoi-card-5.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div
+        class="col-sm-12 col-md-6 col-lg-6 jumbotron-content"
+        data-aos="fade-left"
+      >
+        <div class="jumbotron mt-2">
+          <h6 class="display-4 fs-4 fw-bold">
+            Phố Cổ Hà Nội: Nơi Thời Gian Ngưng Đọng Giữa Lòng Thủ Đô
+          </h6>
+          <p class="fs-5" style="color: black">
+            Phố cổ Hà Nội là một khu vực lịch sử và văn hóa nằm ngay tại
+            trung tâm thủ đô Hà Nội, Việt Nam. Nơi đây không chỉ là điểm
+            đến du lịch hấp dẫn mà còn là một phần không thể thiếu của đời
+            sống người dân Hà Nội. Với mạng lưới các con phố nhỏ hẹp, đan
+            xen như mê cung, phố cổ mang trong mình những dấu ấn đậm nét
+            của thời kỳ phong kiến với kiến trúc cổ kính, những ngôi nhà
+            ống truyền thống và các đình, chùa, đền thờ cổ.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<div
+class="NhaTaiTro"
+data-aos="fade-up"
+data-aos-duration="4000"
+style="border-top: 1px black solid; margin-top: 20px"
+>
+<h2 class="card-title fw-bold text-center">
+  Nhà tài trợ của <span style="color: red">chúng tôi</span>
+</h2>
+<div class="carousel-container">
+  <div class="customer-carousel pb-5">
+    <div id="customerCarousel" class="carousel-item1">
+      <img src="../img/NTT1.jpg" alt="First slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT2.jpg" alt="Second slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT3.jpg" alt="Third slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT4.jpg" alt="Fourth slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT5.jpg" alt="Fifth slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT6.jpg" alt="Sixth slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT3.jpg" alt="Seventh slide" />
+    </div>
+    <div class="carousel-item1">
+      <img src="../img/NTT2.jpg" alt="Eighth slide" />
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="../js/index.js"></script>

@@ -1,0 +1,69 @@
+
+<div class="container-fluid header" style="height: 110px" ng-controller="NavController">
+  <nav class="navbar navbar-expand-lg fs-6 navbar-fixed-top navbar2">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#!trangchu">
+        <img class="img-fluid" src="../img/images-removebg-preview.png" alt="" width="150"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-menu">
+          <li class="nav-item">
+            <a class="nav-link"  aria-current="page" href="#!trangchu"><i class="bi bi-house"></i> Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="#!GioiThieu"><i class="bi bi-person-lines-fill"></i> Giới thiệu</a>
+          </li>
+          <li class="nav-item dropdown" ng-controller="FillDataPD">
+            <a class="nav-link  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+              <i class="bi bi-list-ol"></i> Danh mục
+            </a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="p in ProDucts | unique: 'TenTour'">
+                <a class="dropdown-item" href="#!DanhMuc" ng-click="filtersName(p.TenTour)">
+                  {{p.TenTour}}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="#!LienHe"><i class="bi bi-telephone-inbound"></i> Liên hệ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="#!TinTuc"><i class="bi bi-info-square"></i> Tin tức</a>
+          </li>
+          <li class="nav-item" ng-controller="Carts">
+            <a class="nav-link" href="#!GioHang">
+                <i class="bi bi-basket2"></i> Giỏ hàng
+                <span id="cartItemCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{cartItemCount}}
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        <nav class="navbar navbar-expand-lg navbar-light" ng-controller="ProfileUser">
+          <div class="container-fluid">
+            <ul class="navbar-nav ml-auto" style="margin-right: 15px">
+              <li class="nav-item m-1" ng-show="isLoggedIn()">
+                <a class="nav-link"  href="#!ThongTinCaNhan"><span>Xin chào: {{User.HoTen}}</span></a>
+              </li>
+              <span class="nav-link"  ng-show="isLoggedIn()">\</span>
+              <li class="nav-item m-1" ng-show="isLoggedIn()">
+                <a class="nav-link"  href="#" ng-click="LogOut()"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+              </li>
+              <li class="nav-item m-1" ng-show="!isLoggedIn()">
+                <a class="nav-link"  href="#!DangNhap"><i class="bi bi-person"></i> Đăng nhập</a>
+              </li>
+              <li class="nav-item m-1" ng-show="!isLoggedIn()">
+                <a class="nav-link"  href="#!Dangky"><i class="bi bi-person-badge-fill"></i> Đăng ký</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      

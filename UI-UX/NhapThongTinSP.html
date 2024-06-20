@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Nhập Thông Tin Sản Phẩm</title>
+    <style>
+        form {
+            width: 50%;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form Nhập Thông Tin Sản Phẩm Du Lịch</h2>
+    <form action="/submit-product" method="POST" enctype="multipart/form-data">
+        <label for="id">ID Sản Phẩm</label>
+        <input type="text" id="id" name="id" required>
+        
+        <label for="TenTour">Tên Tour</label>
+        <input type="text" id="TenTour" name="TenTour" required>
+        
+        <label for="TenNoiDen">Tên Nơi Đến</label>
+        <input type="text" id="TenNoiDen" name="TenNoiDen" required>
+        
+        <label for="TenNoiBatDau">Tên Nơi Bắt Đầu</label>
+        <input type="text" id="TenNoiBatDau" name="TenNoiBatDau" required>
+        
+        <label for="ThoiGian">Thời Gian</label>
+        <input type="text" id="ThoiGian" name="ThoiGian" required>
+        
+        <label for="Gia">Giá</label>
+        <input type="number" id="Gia" name="Gia" required>
+        
+        <label for="SL">Số Lượng</label>
+        <input type="number" id="SL" name="SL" required>
+        
+        <label for="MoTa">Mô Tả</label>
+        <textarea id="MoTa" name="MoTa" rows="4" required></textarea>
+        
+        <label for="img1">Hình Ảnh 1</label>
+        <input type="file" id="img1" name="images[img1]" accept="image/*" required>
+        
+        <label for="img2">Hình Ảnh 2</label>
+        <input type="file" id="img2" name="images[img2]" accept="image/*" required>
+        
+        <label for="img3">Hình Ảnh 3</label>
+        <input type="file" id="img3" name="images[img3]" accept="image/*" required>
+        
+        <label for="img4">Hình Ảnh 4</label>
+        <input type="file" id="img4" name="images[img4]" accept="image/*" required>
+        
+        <label for="img5">Hình Ảnh 5</label>
+        <input type="file" id="img5" name="images[img5]" accept="image/*" required>
+        
+        <button type="submit">Lưu Sản Phẩm</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,83 @@
+
+    <div
+      class="body-web"
+      style="width: 100%; height: auto; margin-top: 20px; margin-bottom: 70px" ng-controller="ProfileUser"
+    >
+    <div class="container d-flex justify-content-center">
+      <div class="row justify-content-center w-75">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+          <div class="box-form m-auto">
+            <form class="form" name="formVali" style="width: 100%;" >
+              <p class="title">Đăng ký</p>
+              <div class="form-group">
+                <label class="form-label">Họ và Tên</label>
+                <input placeholder="Nhập họ và tên" type="text" class="input form-control" ng-model="UserDangKy.HoTen" name="HoTen" required>
+                <div ng-show="formVali.HoTen.$touched && formVali.HoTen.$error.required" style="color: red;">Họ và tên không được bỏ trống</div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input placeholder="Nhập email" type="email" class="input form-control" ng-model="UserDangKy.Email" name="Email" required>
+              <div ng-show="formVali.Email.$touched && formVali.Email.$error.required" style="color: red;">Email không được bỏ trống</div>
+              <div ng-show="formVali.Email.$touched && formVali.Email.$error.email" style="color: red;">Email không hợp lệ</div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Mật khẩu</label>
+            <input placeholder="Nhập mật khẩu" type="password" class="input form-control" ng-model="UserDangKy.MatKhau" name="MatKhau" required>
+            <div ng-show="formVali.MatKhau.$touched && formVali.MatKhau.$error.required" style="color: red;">
+                Mật khẩu không được bỏ trống
+            </div>
+        </div>
+        <!-- Xác nhận mật khẩu -->
+        <div class="form-group">
+          <label class="form-label">Xác nhận mật khẩu</label>
+          <input id="confirmPasswordInput" name="txtConfirmPassword" placeholder="Nhập lại mật khẩu" type="password" class="input form-control" ng-model="UserDangKy.confirmPassword" required>
+          <div ng-show="formVali.txtConfirmPassword.$touched && formVali.txtConfirmPassword.$error.required" style="color: red;">
+              Bạn chưa nhập mật khẩu xác nhận
+          </div>
+          <div ng-show="formVali.txtConfirmPassword.$touched && UserDangKy.MatKhau !== UserDangKy.confirmPassword" style="color: red;">
+              Xác nhận mật khẩu không khớp
+          </div>
+      </div>
+            
+            <div class="form-group">
+              <div class="row gx-3 mb-3 w-100">
+                <div class="col-md-6 w-100">
+                  <label class="mb-1 w-100" for="inputPhone">Số điện thoại</label>
+                  <input
+                    class="form-control"
+                    id="inputPhone"
+                    type="tel"
+                    name="phone"
+                    ng-model="UserDangKy.SoDienThoai"
+                    ng-pattern="/^0[1-9]\d{8,9}$/"
+                    required
+                  />
+                  <span style="color:red" ng-show="formVali.phone.$touched && formVali.phone.$error.required">Số điện thoại là bắt buộc.</span>
+                  <span style="color:red" ng-show="formVali.phone.$touched && formVali.phone.$error.pattern">Số điện thoại không hợp lệ.</span>
+                </div>
+              
+          </div>
+          
+          <div class="form-group mb-3">
+            <label class="form-label" for="genderSelect">Giới tính</label>
+            <select class="form-control" id="genderSelect" ng-model="UserDangKy.GioiTinh" name="GioiTinh" required>
+                <option value="" disabled selected>Chọn giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+        </div>
+        <div ng-show="formVali.GioiTinh.$touched && formVali.GioiTinh.$error.required" style="color: red;">
+            Bạn chưa chọn giới tính
+        </div>
+              <button  ng-Click="DangKy(UserDangKy)"  ng-disabled="formVali.$invalid" class="btn btn-primary">Đăng ký</button>
+              <p class="signin">Bạn có tài khoản chưa? <a href="#!DangNhap">Đăng nhập ngay</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </div>

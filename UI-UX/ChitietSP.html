@@ -1,0 +1,114 @@
+
+<link rel="stylesheet" href="../css/index.css">
+
+<div
+class="body-web"
+style="width: 100%; height: auto; margin-top: 30px; margin-bottom: 70px" ng-controller="Carts"
+>
+<div class="container" ng-controller="FillDataPD">
+  <article class="">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-6 mt-3" >
+          <img src="{{ detailPro.images.img1 }}" alt="" class="img-product-top" />
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-6" style="font-size: 30px">
+          <ul class="list-group list-content-product">
+              <li class="list-group-item">
+                  Thành phố:
+                  <span style="color: coral">
+                      {{ detailPro.TenNoiDen }} <span class="badge text-bg-danger">Hot</span>
+                  </span>
+              </li>
+              <li class="list-group-item">
+                  Giá: <span style="color: coral">{{detailPro.Gia * detailPro.SL | number:0}} đ</span>
+              </li>
+              <li class="list-group-item">
+                  Thời gian: <span style="color: coral">{{ detailPro.ThoiGian }}</span>
+              </li>
+              <li class="list-group-item">
+                  Xuất phát từ:
+                  <span style="color: coral">{{ detailPro.TenNoiBatDau }}</span>
+              </li>
+              <li class="list-group-item">
+                  <label for="quantity">Số lượng:</label>
+                  <input type="number" min="1" ng-model="detailPro.SL"  value="1" style="width: 100px;">
+                  <span class="badge text-bg-primary">{{totalQuantity}}</span>
+              </li>
+          </ul>
+          <a>
+            <button type="button" class="btn btn-primary ms-3 fw-bold position-relative" ng-click="addProdutctsp(detailPro)">
+              <span class="btn-text" >Đặt vé ngay</span>
+              <div class="btn-color"></div>
+          </button>
+          </a>
+      </div>
+  </div>        
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 style="font-weight: bold">Những nơi liên quan</h1>
+      </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="row img-Prodeuct" >
+      <img class="img-thumbnail" src="{{detailPro.images.img1}}" alt="" />
+      <img class="img-thumbnail" src="{{detailPro.images.img2}}" alt="" />
+      <img class="img-thumbnail" src="{{detailPro.images.img3}}" alt="" />
+      <img class="img-thumbnail" src="{{detailPro.images.img4}}" alt="" />
+      <img class="img-thumbnail" src="{{detailPro.images.img5}}" alt="" />
+
+    </div>
+  </article>
+  <div class="row" style="padding-top: 10px">
+    <div class="Mota-sanpham w-100 bg-body">
+      <div class="row">
+        <div class="item col-12 col-md-6 border-top-1">
+          <!-- Adjust column size for different screens -->
+          <div class="img-item w-100 h-100">
+              <img class="img-fluid" data-aos="fade-right" src="{{detailPro.images.img1}}" alt="" />
+          </div>
+        </div>
+        <div class="content-item col-12 col-md-6 mt-3" data-aos="fade-left">
+          <!-- Adjust column size for different screens -->
+          <p>
+            {{detailPro.MoTa.line1}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="Mota-sanpham w-100 bg-body">
+      <div class="row">
+        <div class="item col-12 col-md-6">
+          <!-- Adjust column size for different screens -->
+          <div class="img-item w-100">
+              <img class="img-fluid"  data-aos="fade-right" src="{{detailPro.images.img2}}" alt="" />
+          </div>
+        </div>
+        <div class="content-item col-12 col-md-6 mt-3"  data-aos="fade-left">
+          <!-- Adjust column size for different screens -->
+          <p>
+            {{detailPro.MoTa.line2}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="Mota-sanpham w-100 bg-body">
+      <div class="row">
+        <div class="item col-12 col-md-6">
+          <!-- Adjust column size for different screens -->
+          <div class="img-item w-100">
+              <img class="img-fluid" data-aos="fade-right" src="{{detailPro.images.img3}}" alt="" />
+          </div>
+        </div>
+        <div class="content-item col-12 col-md-6 mt-3" data-aos="fade-left">
+          <!-- Adjust column size for different screens -->
+          <p>
+            {{detailPro.MoTa.line3}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="../js/index.js"></script>

@@ -1,0 +1,300 @@
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+<!-- Bootstrap Icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+/>
+<div
+  class="body-web"
+  ng-controller="ProfileUser"
+  style="width: 100%; height: auto; margin-top: 30px; margin-bottom: 70px"
+>
+  <h1 class="text-center">Thông tin cá nhân</h1>
+  <div class="container-xl px-4 mt-4" ng-controller="FillDataPD">
+    <hr class="mt-0 mb-4" />
+    <div class="row">
+      <div class="col-xl-4">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0" style="margin-top: 40px">
+          <div class="card-header">Hình</div>
+          <div class="card-body text-center">
+            <!-- Profile picture image-->
+            <img
+              class="img-account-profile rounded-circle mb-2"
+              ng-src="{{User.img || 'http://bootdey.com/img/Content/avatar/avatar1.png'}}"
+              alt="User Image"
+            />
+            <!-- Profile picture help block -->
+            <div class="small font-italic text-muted mb-4">
+              Hình không lớn hơn 5 MB
+            </div>
+            <!-- Profile picture upload button -->
+            <div class="mb-3">
+              <input
+                class="form-control"
+                type="file"
+                id="formFile"
+                onchange="angular.element(this).scope().uploadImage(this)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <!-- Account details card -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="tab-nav active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#home-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="home-tab-pane"
+              aria-selected="true"
+            >
+              Thông tin
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="tab-nav"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="profile-tab-pane"
+              aria-selected="false"
+            >
+              Danh sách
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="home-tab-pane"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+            tabindex="0"
+          >
+            <div class="card mb-4">
+              <div class="card-header">Chi tiết thông tin cá nhân</div>
+              <div class="card-body">
+                <form name="formVali">
+                  <!-- Form Group (username)-->
+                  <div class="row gx-3 mb-3">
+                    <!-- Form Group (first name)-->
+                    <!-- Form Group (Họ và tên) -->
+                    <div class="col-md-12">
+                      <label class="small mb-1" for="inputFirstName"
+                        >Họ và tên</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputFirstName"
+                        type="text"
+                        ng-model="User.HoTen"
+                        name="HoTen"
+                        required
+                      />
+                      <div
+                        ng-show="formVali.HoTen.$touched && formVali.HoTen.$error.required"
+                        style="color: red"
+                      >
+                        Họ và tên không được bỏ trống
+                      </div>
+                    </div>
+                    <!-- Form Group (Email) -->
+                    <div class="mb-3 mt-3">
+                      <label class="small mb-1" for="inputUsername"
+                        >Email</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputUsername"
+                        ng-disabled="true"
+                        type="email"
+                        ng-model="User.Email"
+                        name="Email"
+                        required
+                        ng-pattern="/^\S+@\S+\.\S+$/"
+                      />
+                      <div
+                        ng-show="formVali.Email.$touched && formVali.Email.$error.required"
+                        style="color: red"
+                      >
+                        Email không được bỏ trống
+                      </div>
+                      <div
+                        ng-show="formVali.Email.$touched && formVali.Email.$error.pattern"
+                        style="color: red"
+                      >
+                        Email không hợp lệ
+                      </div>
+                    </div>
+                    <!-- Form Group (Mật khẩu) -->
+                    <div class="mb-3 mt-3">
+                      <label class="">Mật khẩu</label>
+                      <div
+                        class="input-wrapper position-relative d-flex align-items-center"
+                      >
+                        <input
+                          required
+                          placeholder="Nhập mật khẩu"
+                          type="{{showPassword ? 'text' : 'password'}}"
+                          class="input form-control"
+                          ng-model="User.MatKhau"
+                          name="MatKhau"
+                        />
+                        <i
+                          class="bi bi-eye-fill position-absolute"
+                          ng-show="showPassword"
+                          ng-click="Changepass()"
+                        ></i>
+                        <i
+                          class="bi bi-eye-slash-fill position-absolute"
+                          ng-show="!showPassword"
+                          ng-click="Changepass()"
+                        ></i>
+                      </div>
+                      <div
+                        ng-show="formVali.MatKhau.$touched && formVali.MatKhau.$error.required"
+                        style="color: red"
+                      >
+                        Mật khẩu không được bỏ trống
+                      </div>
+                    </div>
+                    <div class="row gx-3 mb-3" style="margin-left: 1px">
+                      <!-- Form Group (organization name)-->
+                      <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          ng-model="User.GioiTinh"
+                      >
+                          <option value="Nam" ng-selected="User.GioiTinh === 'Nam'">Nam</option>
+                          <option value="Nữ" ng-selected="User.GioiTinh === 'Nữ'">Nữ</option>
+                      </select>
+                  </div>
+                  
+                    <!-- Form Group (email address)-->
+                    <div class="row gx-3 mb-3">
+                      <!-- Form Group (phone number)-->
+                      <div class="row gx-3 mb-3">
+                        <div class="col-md-6">
+                          <label class="small mb-1" for="inputPhone"
+                            >Số điện thoại</label
+                          >
+                          <input
+                            class="form-control"
+                            id="inputPhone"
+                            type="tel"
+                            name="phone"
+                            ng-model="User.SoDienThoai"
+                            ng-pattern="/^0[1-9]\d{8,9}$/"
+                            required
+                          />
+                          <span
+                            style="color: red"
+                            ng-show="formVali.phone.$touched && formVali.phone.$error.required"
+                            >Số điện thoại là bắt buộc.</span
+                          >
+                          <span
+                            style="color: red"
+                            ng-show="formVali.phone.$touched && formVali.phone.$error.pattern"
+                            >Số điện thoại không hợp lệ.</span
+                          >
+                        </div>
+                        <!-- Form Group (birthday)-->
+                        <div class="col-md-6">
+                          <label class="small mb-1" for="inputBirthday"
+                            >Ngày tháng năm sinh</label
+                          > 
+                          <input
+                            class="form-control"
+                            id="inputBirthday"
+                            type="text"
+                            name="birthday"
+                            placeholder="19-08-19xx"
+                            ng-model="User.ngaySinh"
+                            ng-pattern="/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/"
+                            required
+                          />
+                          <span style="color: red" ng-show="formVali.birthday.$touched && formVali.birthday.$error.required">Ngày tháng năm sinh là bắt buộc.</span>
+                          <span style="color: red" ng-show="formVali.birthday.$touched && formVali.birthday.$error.pattern">Ngày tháng năm sinh không hợp lệ. Vui lòng nhập đúng định dạng DD/MM/YYYY.</span>
+                        </div>
+                      </div>
+                      <!-- Save changes button-->
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        ng-disabled="formVali.$invalid"
+                        ng-click="UpdateUser(User)"
+                      >
+                        Lưu thay đổi
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile-tab-pane"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+            tabindex="0"
+          >
+            <div class="card">
+              <div class="card-header">Lịch sử đặt tour</div>
+              <div class="card-body scrollable-div">
+                <div
+                  class="row bootstrap snippets bootdeys"
+                  id="real-estates-columns"
+                >
+                  <div
+                    ng-if="User.carts.length == 0"
+                    class="ThongBaoLichSu text-center"
+                  >
+                    <h1>Bạn chưa đặt tour nào!!!</h1>
+                  </div>
+                  <div class="shop">
+                    <div class="box" ng-repeat="c in User.carts">
+                      <div class="box-img">
+                        <img src="{{c.images.img1}}" class="img-thumbnail" />
+                      </div>
+                      <div class="content" style="width: 90%">
+                        <h5>Nơi đến: {{c.TenNoiDen}}</h5>
+                        <h5>Khởi hành: {{c.TenNoiBatDau}}</h5>
+                        <h5>Thời gian: {{c.ThoiGian}}</h5>
+                        <h6>Số lượng: {{c.SL}}</h6>
+                        <h6>Tổng tiền: {{c.SL * c.Gia | number}}</h6>
+                        <h6>
+                          Ngày đặt tour: {{c.orderTime| date : 'dd-MM-yyyy '}}
+                          /Giờ: {{c.orderTime| date : ' HH:mm'}}
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>

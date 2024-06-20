@@ -1,0 +1,30 @@
+<div
+  class="body-web" ng-controller="Carts"
+  style="width: 100%; height: auto; margin-top: 70px; margin-bottom: 70px"
+>
+<div class="wrapper">
+  <h1>Giỏ hàng</h1>
+  <div class="project">
+    <div class="shop">
+      <div class="box" ng-repeat="c in Carts">
+        <div class="box-img">
+          <img src="{{c.images.img1}}" class="img-thumbnail">
+        </div>
+        <div class="content">
+          <h5>Nơi đến: {{c.TenNoiDen}}</h5>
+          <h5>Khởi hành: {{c.TenNoiBatDau}} </h5>
+          <h5>Thời gian: {{c.ThoiGian}} </h5>
+          <h6>Giá: {{c.Gia | number:0}} đ</h6>
+          <input class="unit" type="number" min="1" ng-model="c.SL" ng-change="updateTotalPrice()" value="{{c.SL}}">
+          <button class="btn-area" ng-click="RemoveProduct($index)"><i aria-hidden="true" class="fa fa-trash text-center"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="right-bar">
+      <span>Tổng tiền: </span> <hr> <span>{{totalPrice | number:0}} đ
+    </span>
+    <a href="" ng-click="payProducts()"><i class="fa fa-shopping-cart"></i>Thanh Toán</a>
+    </div>
+  </div>
+</div>    
+</div>
